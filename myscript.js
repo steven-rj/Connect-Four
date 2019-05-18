@@ -7,6 +7,8 @@ var player2Color = 'rgb(237, 45, 73)';
 var game_on = true;
 var table = $('table tr');
 
+var rButton = $('.restart');
+
 function reportWin(rowNum, colNum)
 {
   console.log("You won starting at this row, col");
@@ -99,6 +101,16 @@ function diagonalWinCheck()
   }
 }
 
+function showRestartButton()
+{
+  rButton.css('visibility', 'show')
+}
+
+function hideRestartButton()
+{
+  rButton.css('visibility', 'hidden')
+}
+
 var currentPlayer = 1;
 var currentName = player1;
 var currentColor = player1Color;
@@ -117,6 +129,7 @@ $('.board button').on('click', function()
       $('h1').text(currentName + " has won!")
       $('h3').fadeOut('fast');
       $('h2').fadeOut('fast');
+      showRestartButton();
     }
 
     currentPlayer = currentPlayer * -1;
